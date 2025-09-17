@@ -20,7 +20,7 @@ export function Card({ logo, url, name, padded, colors }: { logo: StaticImageDat
           <div className="flex sm:mx-4 h-[64px] w-[64px]">
             <Image src={logo} alt={name} />
           </div>
-          <div className="items-center text-2xl p-2 sm:flex hidden">
+          <div className="items-center text-2xl p-2 sm:flex hidden text-shadow-sm">
             {name}
           </div>
         </div>
