@@ -28,7 +28,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             </div>
           </div>
 
-          <div className="flex flex-row grow justify-center sm:p-16 p-4 overflow-auto">
+          <h1 className="text-5xl text-center font-bold pt-8 text-shadow-lg">{name_pick()}</h1>
+
+          <div className="flex flex-row grow justify-center sm:pb-16 pb-4 overflow-auto">
             <Wallpaper />
             {children}
           </div>
@@ -94,3 +96,22 @@ const wp_pick = (path: string) => {
       return ''
   }
 }
+
+const name_pick = () => {
+  const path = usePathname()
+
+  switch (path) {
+    case '/':
+    case '/skoh':
+     return 'Skoh'
+    case '/notskoh':
+     return 'NotSkoh'
+    case '/krystal':
+     return 'Krystal'
+    case '/quantum':
+     return 'Quantum'
+    default:
+      return ''
+  }
+}
+
