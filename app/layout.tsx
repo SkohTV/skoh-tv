@@ -39,7 +39,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <div className="flex h-3/4 items-center">
             <div className="bg-white/30 backdrop-blur-sm py-1 rounded-l-lg h-fit">
               <ChannelPic src={LogoKrystal} size={48} bsize={2} alt='Krystal&amps;s logo' url='' />
-              <ChannelPic src={LogoQuantum} size={48} bsize={2} alt='Quantum&amps;s logo' url='' />
+              <ChannelPic src={LogoQuantum} size={48} bsize={2} alt='Quantum&amps;s logo' url='/quantum' />
               <div className="h-px w-4/5 rounded-full m-2 bg-zinc-700"></div>
               <ChannelPic src={LogoNotSkoh} size={48} bsize={2} alt='NotSkoh&amps;s logo' url='' />
             </div>
