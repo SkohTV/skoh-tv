@@ -2,7 +2,7 @@ import { Card } from "../_components";
 
 import Youtube from "@/public/brand/youtube.png";
 import Twitch from "@/public/brand/twitch.png";
-import Undefined from "@/public/logo/LogoNotSkoh.jpg";
+import Undefined from "@/public/logo/logo_notskoh.jpg";
 
 
 export default function Page() {
