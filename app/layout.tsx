@@ -30,7 +30,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             </div>
           </div>
 
-          <div className="flex grow justify-center p-16">
+          <div className="flex grow justify-center sm:p-16 p-4">
             {children}
           </div>
         </div>
