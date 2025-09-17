@@ -7,6 +7,7 @@ export default function Page() {
   return (
     <div>
       <Card logo={Youtube} url='https://www.youtube.com/@krystal090' name='Youtube' padded={false} colors={{ bg: 'bg-red-600/20', hover_bg: 'hover:bg-red-600/50', border: 'border-red-600' }} />
+      <div className="h-4"></div>
     </div>
   );
 }

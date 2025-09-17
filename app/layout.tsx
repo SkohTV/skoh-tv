@@ -19,10 +19,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body className="h-screen bg-neutral-900 text-white">
-        <Wallpaper />
 
         <div className="flex flex-col h-full">
-
           <div className="flex w-full justify-center">
             <div className="flex bg-white/30 rounded-b-lg px-2">
               <ChannelPic src={LogoSkoh} size={86} bsize={4} alt='Skoh&amps;s logo' url='/skoh' />
@@ -30,7 +28,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             </div>
           </div>
 
-          <div className="flex grow justify-center sm:p-16 p-4">
+          <div className="flex flex-row grow justify-center sm:p-16 p-4 overflow-auto">
+            <Wallpaper />
             {children}
           </div>
         </div>
@@ -75,7 +74,7 @@ function Wallpaper() {
   const wallpaper = wp_pick(pathname)
 
   return (
-    <div className={`${wallpaper} duration-200 h-full w-full absolute -z-1 bottom-0 left-0 bg-cover bg-center`}>
+    <div className={`${wallpaper} duration-200 h-full w-full absolute -z-1 bottom-0 left-0 bg-cover bg-center bg-scroll`}>
     </div>
   )
 }
