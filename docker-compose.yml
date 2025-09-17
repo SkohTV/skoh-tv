@@ -23,7 +23,7 @@ services:
       - external
 
     volumes:
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
       # - ./nginx/favicons/:/favicons/:ro
 
       - /etc/letsencrypt/live/skoh.dev/fullchain.pem:/etc/ssl/skoh-tv/fullchain.pem:ro
