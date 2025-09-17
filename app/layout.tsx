@@ -6,10 +6,10 @@ import { usePathname } from 'next/navigation'
 
 import Image, { StaticImageData } from "next/image";
 
-import LogoSkoh from "@/public/logo/logo_skoh.jpg";
-import LogoNotSkoh from "@/public/logo/logo_notskoh.jpg";
-import LogoQuantum from "@/public/logo/logo_quantum.jpg";
-import LogoKrystal from "@/public/logo/logo_krystal.jpg";
+import LogoSkoh from "@/public/logo/LogoSkoh.jpg";
+import LogoNotSkoh from "@/public/logo/LogoNotSkoh.jpg";
+import LogoQuantum from "@/public/logo/LogoQuantum.jpg";
+import LogoKrystal from "@/public/logo/LogoKrystal.jpg";
 import Link from "next/link";
 
 
