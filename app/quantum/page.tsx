@@ -2,6 +2,14 @@ import { Card } from "../_components";
 
 import Youtube from "@/public/brand/youtube.png";
 
+import { Metadata } from "next";
+
+
+export const metadata: Metadata = {
+  title: 'Quantum',
+  description: 'Wip',
+}
+
 
 export default function Page() {
   return (

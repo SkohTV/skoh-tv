@@ -4,6 +4,14 @@ import Youtube from "@/public/brand/youtube.png";
 import Twitch from "@/public/brand/twitch.png";
 import Undefined from "@/public/logo/logo_notskoh.jpg";
 
+import { Metadata } from "next";
+
+
+export const metadata: Metadata = {
+  title: 'NotSkoh',
+  description: 'Wip',
+}
+
 
 export default function Page() {
   return (

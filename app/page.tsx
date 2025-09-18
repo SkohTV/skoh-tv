@@ -6,7 +6,13 @@ import Steam from "@/public/brand/steam.png";
 import Github from "@/public/brand/github.png";
 import Linkedin from "@/public/brand/linkedin.png";
 import Instagram from "@/public/brand/instagram.png";
+import { Metadata } from "next";
 
+
+export const metadata: Metadata = {
+  title: 'Skoh',
+  description: 'Wip',
+}
 
 export default function Page() {
   return (
