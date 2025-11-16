@@ -24,7 +24,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <div className="flex w-full justify-center">
             <div className="flex bg-white/30 rounded-b-lg px-2">
               <ChannelPic src={LogoSkoh} size={86} bsize={4} alt='Skoh&amps;s logo' url='/skoh' />
-              <ChannelPic src={LogoNotSkoh} size={86} bsize={4} alt='NotSkoh&amps;s logo' url='/notskoh' />
+              <ChannelPic src={LogoNotSkoh} size={86} bsize={4} alt='NotSkoh&amps;s logo' url='/' />
             </div>
           </div>
 
