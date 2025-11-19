@@ -11,7 +11,7 @@ export interface Colors {
 
 export function Card({ logo, url, name, padded, colors }: { logo: StaticImageData, url: string, name: string, padded: boolean, colors: Colors }) {
   const width = (padded ? 'sm:w-4/5 w-full' : 'w-full')
-  const padd = (padded ? 'mt-4' : 'mt-16')
+  const padd = (padded ? 'mt-4' : 'mt-14')
 
   return (
     <div className={`sm:w-[650px] h-[86px] w-[86px] flex ${padd} justify-end`}>
