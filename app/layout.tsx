@@ -53,7 +53,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 
 
 function BigPic() {
-  let pathname = usePathname()
+  const pathname = usePathname()
 
   return (
     <Image height={160} width={160} className="rounded-md mt-4" src={logo_pick(pathname)} alt={pathname} />
