@@ -32,6 +32,7 @@ ENV NODE_ENV production
 ENV NEXT_TELEMETRY_DISABLED 1
 
 WORKDIR /website
+COPY --from=builder /website/public ./public
 COPY --from=builder /website/.next/standalone ./
 COPY --from=builder /website/.next/static ./.next/static
 
