@@ -29,6 +29,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 
           <div className="flex flex-row grow justify-center sm:pb-16 pb-4 overflow-auto">
             <Wallpaper />
+            <PreloadBackgrounds />
             {children}
           </div>
         </div>
@@ -51,6 +52,26 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 }
 
 
+
+//
+// Reusable components
+//
+
+function PreloadBackgrounds() {
+  return (
+    <div className="hidden">
+      {["Skoh", "NotSkoh", "Quantum", "Krystal"].map(n => {
+        return (
+          <img
+            key={n}
+            loading="eager" decoding="async" fetchPriority="low" // Download the image, but VERY LOW priority, to avoid slowing page rendering
+            src={"/background/BlurBg" + n + ".jpg"}
+          />
+        )
+      })}
+    </div>
+  )
+}
 
 function BigPic() {
   const pathname = usePathname()
@@ -86,21 +107,39 @@ function Wallpaper() {
   )
 }
 
+function Name() {
+  const pathname = usePathname()
+  const name = name_pick(pathname)
+
+  return (
+    <h1 className="text-5xl text-center font-bold pt-2 text-shadow-lg">
+      {name}
+    </h1>
+  )
+}
+
+
+
+//
+// Pickers
+//
+
 const wp_pick = (path: string) => {
   switch (path) {
     case '/':
     case '/skoh':
-     return 'bg-[url(../public/background/BlurBgSkoh.jpg)]'
+     return 'bg-[url(/background/BlurBgSkoh.jpg)]'
     case '/notskoh':
-     return 'bg-[url(../public/background/BlurBgNotSkoh.jpg)]'
+     return 'bg-[url(/background/BlurBgNotSkoh.jpg)]'
     case '/krystal':
-     return 'bg-[url(../public/background/BlurBgKrystal.jpg)]'
+     return 'bg-[url(/background/BlurBgKrystal.jpg)]'
     case '/quantum':
-     return 'bg-[url(../public/background/BlurBgQuantum.jpg)]'
+     return 'bg-[url(/background/BlurBgQuantum.jpg)]'
     default:
       return ''
   }
 }
+
 
 const logo_pick = (path: string) => {
   switch (path) {
@@ -118,17 +157,6 @@ const logo_pick = (path: string) => {
   }
 }
 
-function Name() {
-  const pathname = usePathname()
-  const name = name_pick(pathname)
-
-  return (
-    <h1 className="text-5xl text-center font-bold pt-2 text-shadow-lg">
-      {name}
-    </h1>
-  )
-}
-
 const name_pick = (path: string) => {
   switch (path) {
     case '/':
@@ -144,4 +172,3 @@ const name_pick = (path: string) => {
       return ''
   }
 }
-
