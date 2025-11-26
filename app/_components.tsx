@@ -18,7 +18,7 @@ export function Card({ logo, url, name, padded, colors }: { logo: StaticImageDat
       <Link href={url} className={`flex ${colors.bg} ${colors.hover_bg} border-3 rounded-md ${colors.border} duration-100 p-1 ${width} h-full sm:justify-start justify-center`}>
         <div className="mt-[3px] flex">
           <div className="flex sm:mx-4 h-[64px] w-[64px]">
-            <Image src={logo} alt={name} />
+            <Image className='rounded-md' src={logo} alt={name} />
           </div>
           <div className="items-center text-2xl p-2 sm:flex hidden text-shadow-sm">
             {name}

@@ -10,6 +10,7 @@ import LogoSkoh from "@/public/logo/logo_skoh.jpg";
 import LogoNotSkoh from "@/public/logo/logo_notskoh.jpg";
 import LogoQuantum from "@/public/logo/logo_quantum.jpg";
 import LogoKrystal from "@/public/logo/logo_krystal.jpg";
+import LogoUndefined from "@/public/logo/logo_undefined.jpg";
 import Link from "next/link";
 
 
@@ -153,7 +154,7 @@ const logo_pick = (path: string) => {
     case '/quantum':
      return LogoQuantum 
     default:
-      return ''
+      return LogoUndefined
   }
 }
 
