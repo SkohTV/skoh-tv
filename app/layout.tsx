@@ -10,6 +10,7 @@ import LogoSkoh from "@/public/logo/logo_skoh.jpg";
 import LogoNotSkoh from "@/public/logo/logo_notskoh.jpg";
 import LogoQuantum from "@/public/logo/logo_quantum.jpg";
 import LogoKrystal from "@/public/logo/logo_krystal.jpg";
+import LogoDeeptrout from "@/public/logo/logo_deeptrout.jpg";
 import LogoUndefined from "@/public/logo/logo_undefined.jpg";
 import Link from "next/link";
 
@@ -55,8 +56,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 <ChannelPic src={LogoSkoh} size={48} bsize={2} alt='Skoh&amps;s logo' url='/skoh' />
                 <ChannelPic src={LogoNotSkoh} size={48} bsize={2} alt='NotSkoh&amps;s logo' url='' />
                 <div className="h-px group-hover:w-4/5 group-focus:w-4/5 rounded-full m-2 bg-zinc-700"></div>
-                <ChannelPic src={LogoKrystal} size={48} bsize={2} alt='Krystal&amps;s logo' url='/krystal' />
-                <ChannelPic src={LogoQuantum} size={48} bsize={2} alt='Quantum&amps;s logo' url='/quantum' />
+                <ChannelPic src={LogoDeeptrout} size={48} bsize={2} alt='Deeptrout&amps;s logo' url='/deeptrout' />
+                <div className="flex justify-evenly">
+                  <div><ChannelPic src={LogoKrystal} size={20} bsize={2} alt='Krystal&amps;s logo' url='/krystal' /></div>
+                  <div><ChannelPic src={LogoQuantum} size={20} bsize={2} alt='Quantum&amps;s logo' url='/quantum' /></div>
+                </div>
               </div>
             </div>
           </div>
@@ -88,7 +92,7 @@ const LeftArrow = () => (
 function PreloadBackgrounds() {
   return (
     <div className="hidden">
-      {["Skoh", "NotSkoh", "Quantum", "Krystal"].map(n => {
+      {["Skoh", "NotSkoh", "Quantum", "Krystal", "Deeptrout"].map(n => {
         return (
           <img
             key={n}
@@ -117,10 +121,11 @@ function ChannelPic({ src, size, bsize, alt, url }: { src: StaticImageData, size
 
   const border_size = (bsize === 2 ? 'group-hover:border-2 group-focus:border-2' : '')
   const border_color = (pathname === url ? 'border-indigo-600' : 'border-zinc-800')
+  const margins = (size < 48 ? '' : 'm-2')
 
   return (
     <Link href={url} className="w-[0px] h-[0px]">
-      <div className={`${border_size} ${border_color} rounded-full m-2`}>
+      <div className={`${border_size} ${border_color} rounded-full ${margins} w-fit`}>
       <Image src={src} height={size} width={size} className="rounded-full" alt={alt} />
       </div>
     </Link>
@@ -165,6 +170,8 @@ const wp_pick = (path: string) => {
      return 'bg-[url(/background/BlurBgKrystal.jpg)]'
     case '/quantum':
      return 'bg-[url(/background/BlurBgQuantum.jpg)]'
+    case '/deeptrout':
+     return 'bg-[url(/background/BlurBgDeeptrout.jpg)]'
     default:
       return ''
   }
@@ -182,6 +189,8 @@ const logo_pick = (path: string) => {
      return LogoKrystal 
     case '/quantum':
      return LogoQuantum 
+    case '/deeptrout':
+     return LogoDeeptrout 
     default:
       return LogoUndefined
   }
@@ -198,6 +207,8 @@ const name_pick = (path: string) => {
      return 'Krystal'
     case '/quantum':
      return 'Quantum'
+    case '/deeptrout':
+     return 'DeepTrout'
     default:
       return ''
   }
