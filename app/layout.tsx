@@ -98,7 +98,7 @@ const LeftArrow = () => (
 function PreloadBackgrounds() {
   return (
     <div className="hidden">
-      {["Skoh", "NotSkoh", "Quantum", "Krystal", "Deeptrout", "Tweast", "Gabiholo", "Lucup"].map(n => {
+      {["Skoh", "NotSkoh", "Quantum", "Krystal", "Deeptrout", "Tweast", "Gabiholo", "Lucup", "Undefined"].map(n => {
         return (
           <img
             key={n}
@@ -182,12 +182,12 @@ const wp_pick = (path: string) => {
      return 'bg-[url(/background/BlurBgTweast.jpg)]'
 
     case '/gabiholo':
-     return 'bg-[url(/background/BlurBgNotSkoh.jpg)]'
+     return 'bg-[url(/background/BlurBgUndefined.jpg)]'
     case '/lucup':
-     return 'bg-[url(/background/BlurBgNotSkoh.jpg)]'
+     return 'bg-[url(/background/BlurBgUndefined.jpg)]'
 
     default:
-      return ''
+     return 'bg-[url(/background/BlurBgUndefined.jpg)]'
   }
 }
 
