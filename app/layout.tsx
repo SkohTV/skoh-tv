@@ -182,7 +182,7 @@ const wp_pick = (path: string) => {
      return 'bg-[url(/background/BlurBgTweast.jpg)]'
 
     case '/gabiholo':
-     return 'bg-[url(/background/BlurBgUndefined.jpg)]'
+     return 'bg-[url(/background/BlurBgGabiholo.jpg)]'
     case '/lucup':
      return 'bg-[url(/background/BlurBgUndefined.jpg)]'
 
