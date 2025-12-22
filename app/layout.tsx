@@ -7,7 +7,6 @@ import { usePathname } from 'next/navigation'
 import Image, { StaticImageData } from "next/image";
 
 import LogoSkoh from "@/public/logo/logo_skoh.jpg";
-import LogoNotSkoh from "@/public/logo/logo_notskoh.jpg";
 import LogoQuantum from "@/public/logo/logo_quantum.jpg";
 import LogoKrystal from "@/public/logo/logo_krystal.jpg";
 import LogoDeeptrout from "@/public/logo/logo_deeptrout.jpg";
@@ -56,7 +55,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               </div>
               <div>
                 <ChannelPic src={LogoSkoh} size={48} bsize={2} alt='Skoh&amps;s logo' url='/skoh' />
-                <ChannelPic src={LogoNotSkoh} size={48} bsize={2} alt='NotSkoh&amps;s logo' url='' />
                 <div className="h-px group-hover:w-4/5 group-focus:w-4/5 rounded-full m-2 bg-zinc-700"></div>
                 <ChannelPic src={LogoDeeptrout} size={48} bsize={2} alt='Deeptrout&amps;s logo' url='/deeptrout' />
                 <ChannelPic src={LogoTweast} size={48} bsize={2} alt='Tweast&amps;s logo' url='/tweast' />
@@ -96,7 +94,7 @@ const LeftArrow = () => (
 function PreloadBackgrounds() {
   return (
     <div className="hidden">
-      {["Skoh", "NotSkoh", "Quantum", "Krystal", "Deeptrout", "Tweast", "Gabiholo", "Undefined"].map(n => {
+      {["Skoh", "Quantum", "Krystal", "Deeptrout", "Tweast", "Gabiholo", "Undefined"].map(n => {
         return (
           <img
             key={n}
@@ -168,8 +166,6 @@ const wp_pick = (path: string) => {
     case '/':
     case '/skoh':
      return 'bg-[url(/background/BlurBgSkoh.jpg)]'
-    case '/notskoh':
-     return 'bg-[url(/background/BlurBgNotSkoh.jpg)]'
     case '/krystal':
      return 'bg-[url(/background/BlurBgKrystal.jpg)]'
     case '/quantum':
@@ -192,8 +188,6 @@ const logo_pick = (path: string) => {
     case '/':
     case '/skoh':
      return LogoSkoh 
-    case '/notskoh':
-     return LogoNotSkoh 
     case '/krystal':
      return LogoKrystal 
     case '/quantum':
@@ -214,8 +208,6 @@ const name_pick = (path: string) => {
     case '/':
     case '/skoh':
      return 'Skoh'
-    case '/notskoh':
-     return 'NotSkoh'
     case '/krystal':
      return 'Krystal'
     case '/quantum':
