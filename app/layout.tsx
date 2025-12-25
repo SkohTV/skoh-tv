@@ -96,7 +96,7 @@ const LeftArrow = () => (
 function PreloadBackgrounds() {
   return (
     <div className="hidden">
-      {["Skoh", "NotSkoh", "Dev", "Quantum", "Krystal", "Deeptrout", "Tweast", "Gabiholo", "Undefined"].map(n => {
+      {["Skoh", "NotSkoh", "SkohDev", "Quantum", "Krystal", "Deeptrout", "Tweast", "Gabiholo", "Undefined"].map(n => {
         return (
           <img
             key={n}
