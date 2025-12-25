@@ -14,6 +14,7 @@ import LogoKrystal from "@/public/logo/logo_krystal.jpg";
 import LogoDeeptrout from "@/public/logo/logo_deeptrout.jpg";
 import LogoTweast from "@/public/logo/logo_tweast.jpg";
 import LogoGabiholo from "@/public/logo/logo_gabiholo.jpg";
+import LogoLucup from "@/public/logo/logo_lucup.jpg";
 import LogoUndefined from "@/public/logo/logo_undefined.jpg";
 import Link from "next/link";
 
@@ -61,6 +62,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 <ChannelPic src={LogoDeeptrout} size={48} bsize={2} alt='Deeptrout&amps;s logo' url='/deeptrout' />
                 <ChannelPic src={LogoTweast} size={48} bsize={2} alt='Tweast&amps;s logo' url='/tweast' />
                 <ChannelPic src={LogoGabiholo} size={48} bsize={2} alt='Gabiholo&amps;s logo' url='/gabiholo' />
+                <ChannelPic src={LogoLucup} size={48} bsize={2} alt='LucUp&amps;s logo' url='/lucup' />
                 <div className="flex justify-evenly">
                   <div><ChannelPic src={LogoKrystal} size={20} bsize={2} alt='Krystal&amps;s logo' url='/krystal' /></div>
                   <div><ChannelPic src={LogoQuantum} size={20} bsize={2} alt='Quantum&amps;s logo' url='/quantum' /></div>
@@ -96,7 +98,7 @@ const LeftArrow = () => (
 function PreloadBackgrounds() {
   return (
     <div className="hidden">
-      {["Skoh", "NotSkoh", "SkohDev", "Quantum", "Krystal", "Deeptrout", "Tweast", "Gabiholo", "Undefined"].map(n => {
+      {["Skoh", "NotSkoh", "SkohDev", "Quantum", "Krystal", "Deeptrout", "Tweast", "Gabiholo", "Lucup", "Undefined"].map(n => {
         return (
           <img
             key={n}
@@ -195,8 +197,11 @@ const wp_pick = (path: string) => {
      return 'bg-[url(/background/BlurBgDeeptrout.jpg)]'
     case '/tweast':
      return 'bg-[url(/background/BlurBgTweast.jpg)]'
+
     case '/gabiholo':
      return 'bg-[url(/background/BlurBgGabiholo.jpg)]'
+    case '/lucup':
+     return 'bg-[url(/background/BlurBgUndefined.jpg)]'
 
     default:
      return 'bg-[url(/background/BlurBgUndefined.jpg)]'
@@ -223,6 +228,8 @@ const logo_pick = (path: string) => {
      return LogoTweast 
     case '/gabiholo':
      return LogoGabiholo 
+    case '/lucup':
+     return LogoLucup 
     default:
       return LogoUndefined
   }
@@ -247,6 +254,8 @@ const name_pick = (path: string) => {
      return 'Tweast'
     case '/gabiholo':
      return 'Gabiholo'
+    case '/lucup':
+     return 'LucUp'
     default:
       return ''
   }
