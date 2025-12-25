@@ -26,14 +26,14 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en">
       <body className="h-screen bg-neutral-900 text-white">
 
-        <div className="flex flex-col h-full">
+        <div className="flex flex-col h-full overflow-auto">
           <div className="flex w-full justify-center">
             <BigPic />
           </div>
 
           <Name />
 
-          <div className="flex flex-row grow justify-center sm:pb-16 pb-4 overflow-auto">
+          <div className="flex flex-row grow justify-center sm:pb-16 pb-4">
             <Wallpaper />
             <PreloadBackgrounds />
             {children}
