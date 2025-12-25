@@ -8,6 +8,7 @@ import Image, { StaticImageData } from "next/image";
 
 import LogoSkoh from "@/public/logo/logo_skoh.jpg";
 import LogoNotSkoh from "@/public/logo/logo_notskoh.jpg";
+import LogoSkohDev from "@/public/logo/logo_skohdev.jpg";
 import LogoQuantum from "@/public/logo/logo_quantum.jpg";
 import LogoKrystal from "@/public/logo/logo_krystal.jpg";
 import LogoDeeptrout from "@/public/logo/logo_deeptrout.jpg";
@@ -55,8 +56,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 <LeftArrow />
               </div>
               <div>
-                <ChannelPic src={LogoSkoh} size={48} bsize={2} alt='Skoh&amps;s logo' url='/skoh' />
-                <ChannelPic src={LogoNotSkoh} size={48} bsize={2} alt='NotSkoh&amps;s logo' url='' />
+                <ChannelPic src={LogoSkoh} size={48} bsize={2} alt='Skoh&amps;s logo' url='/' />
                 <div className="h-px group-hover:w-4/5 group-focus:w-4/5 rounded-full m-2 bg-zinc-700"></div>
                 <ChannelPic src={LogoDeeptrout} size={48} bsize={2} alt='Deeptrout&amps;s logo' url='/deeptrout' />
                 <ChannelPic src={LogoTweast} size={48} bsize={2} alt='Tweast&amps;s logo' url='/tweast' />
@@ -96,7 +96,7 @@ const LeftArrow = () => (
 function PreloadBackgrounds() {
   return (
     <div className="hidden">
-      {["Skoh", "NotSkoh", "Quantum", "Krystal", "Deeptrout", "Tweast", "Gabiholo", "Undefined"].map(n => {
+      {["Skoh", "NotSkoh", "Dev", "Quantum", "Krystal", "Deeptrout", "Tweast", "Gabiholo", "Undefined"].map(n => {
         return (
           <img
             key={n}
@@ -113,7 +113,22 @@ function BigPic() {
   const pathname = usePathname()
 
   return (
-    <Image height={160} width={160} className="rounded-md mt-4" src={logo_pick(pathname)} alt={pathname} />
+    <div className="flex mt-4">
+      { ['/', '/skoh', '/dev', '/notskoh'].includes(pathname) ? <div className="w-[44px] h-px"></div> : '' }
+      <Image height={160} width={160} className="rounded-md" src={logo_pick(pathname)} alt={pathname} />
+
+      { ['/', '/skoh', '/dev', '/notskoh'].includes(pathname) ? small_skoh_pick(pathname) : '' }
+    </div>
+  )
+}
+
+function SmallPic({ src, alt, url }: { src: StaticImageData, alt: string, url: string }) {
+  return (
+    <Link href={url} className="w-[0px] h-[0px]">
+      <div className="rounded-full w-fit mb-1 mx-1">
+        <Image src={src} height={36} width={36} className="rounded-md" alt={alt} />
+      </div>
+    </Link>
   )
 }
 
@@ -168,6 +183,8 @@ const wp_pick = (path: string) => {
     case '/':
     case '/skoh':
      return 'bg-[url(/background/BlurBgSkoh.jpg)]'
+    case '/dev':
+     return 'bg-[url(/background/BlurBgSkohDev.jpg)]'
     case '/notskoh':
      return 'bg-[url(/background/BlurBgNotSkoh.jpg)]'
     case '/krystal':
@@ -192,6 +209,8 @@ const logo_pick = (path: string) => {
     case '/':
     case '/skoh':
      return LogoSkoh 
+    case '/dev':
+     return LogoSkohDev 
     case '/notskoh':
      return LogoNotSkoh 
     case '/krystal':
@@ -214,6 +233,8 @@ const name_pick = (path: string) => {
     case '/':
     case '/skoh':
      return 'Skoh'
+    case '/dev':
+     return 'Skoh'
     case '/notskoh':
      return 'NotSkoh'
     case '/krystal':
@@ -228,5 +249,32 @@ const name_pick = (path: string) => {
      return 'Gabiholo'
     default:
       return ''
+  }
+}
+
+const small_skoh_pick = (path: string) => {
+  switch (path){
+    case '/':
+    case '/skoh':
+      return (
+        <div>
+          <SmallPic src={LogoSkohDev} alt='Skoh&amps;s dev logo' url='/dev' />
+          <SmallPic src={LogoNotSkoh} alt='NotSkoh&amps;s logo' url='/notskoh' />
+        </div>
+    )
+    case '/dev':
+      return (
+        <div>
+          <SmallPic src={LogoNotSkoh} alt='NotSkoh&amps;s logo' url='/notskoh' />
+          <SmallPic src={LogoSkoh} alt='Skoh&amps;s logo' url='/' />
+        </div>
+    )
+    case '/notskoh':
+      return (
+        <div>
+          <SmallPic src={LogoSkoh} alt='Skoh&amps;s logo' url='/' />
+          <SmallPic src={LogoSkohDev} alt='Skoh&amps;s dev logo' url='/dev' />
+        </div>
+    )
   }
 }
