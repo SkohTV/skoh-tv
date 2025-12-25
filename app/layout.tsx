@@ -137,8 +137,8 @@ function SmallPic({ src, alt, url }: { src: StaticImageData, alt: string, url: s
 
 function ChannelPic({ src, size, bsize, alt, url }: { src: StaticImageData, size: number, bsize: number, alt: string, url: string }) {
   let pathname = usePathname()
-  if (pathname === '/')
-    pathname = '/skoh'
+  if (pathname === '/skoh')
+    pathname = '/'
 
   const border_size = (bsize === 2 ? 'group-hover:border-2 group-focus:border-2' : '')
   const border_color = (pathname === url ? 'border-indigo-600' : 'border-zinc-800')
