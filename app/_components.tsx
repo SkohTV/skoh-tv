@@ -15,7 +15,7 @@ export function Card({ logo, url, name, padded, colors }: { logo: StaticImageDat
 
   return (
     <div className={`sm:w-[650px] sm:h-[86px] w-screen h-[70px] sm:px-0 px-10 flex ${padd} justify-end`}>
-      <Link href={url} className={
+      <Link href={url} target="_blank" className={
         `
           ${width} p-1 flex h-full sm:justify-start justify-center
           ${colors.border} ${colors.bg} ${url === '' ? 'cursor-not-allowed opacity-50' : colors.hover_bg}
