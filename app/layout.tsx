@@ -7,7 +7,6 @@ import { usePathname } from 'next/navigation'
 import Image, { StaticImageData } from "next/image";
 
 import LogoSkoh from "@/public/logo/logo_skoh.jpg";
-import LogoNotSkoh from "@/public/logo/logo_notskoh.jpg";
 import LogoSkohDev from "@/public/logo/logo_skohdev.jpg";
 import LogoQuantum from "@/public/logo/logo_quantum.jpg";
 import LogoKrystal from "@/public/logo/logo_krystal.jpg";
@@ -98,7 +97,7 @@ const LeftArrow = () => (
 function PreloadBackgrounds() {
   return (
     <div className="hidden">
-      {["Skoh", "NotSkoh", "SkohDev", "Quantum", "Krystal", "Deeptrout", "Tweast", "Gabiholo", "Lucup", "Undefined"].map(n => {
+      {["Skoh", "SkohDev", "Quantum", "Krystal", "Deeptrout", "Tweast", "Gabiholo", "Lucup", "Undefined"].map(n => {
         return (
           <img
             key={n}
@@ -116,10 +115,10 @@ function BigPic() {
 
   return (
     <div className="flex mt-4">
-      { ['/', '/skoh', '/dev', '/notskoh'].includes(pathname) ? <div className="w-[44px] h-px"></div> : '' }
+      { ['/', '/skoh', '/dev'].includes(pathname) ? <div className="w-[44px] h-px"></div> : '' }
       <Image height={160} width={160} className="rounded-md" src={logo_pick(pathname)} alt={pathname} />
 
-      { ['/', '/skoh', '/dev', '/notskoh'].includes(pathname) ? small_skoh_pick(pathname) : '' }
+      { ['/', '/skoh', '/dev'].includes(pathname) ? small_skoh_pick(pathname) : '' }
     </div>
   )
 }
@@ -187,8 +186,6 @@ const wp_pick = (path: string) => {
      return 'bg-[url(/background/BlurBgSkoh.jpg)]'
     case '/dev':
      return 'bg-[url(/background/BlurBgSkohDev.jpg)]'
-    case '/notskoh':
-     return 'bg-[url(/background/BlurBgNotSkoh.jpg)]'
     case '/krystal':
      return 'bg-[url(/background/BlurBgKrystal.jpg)]'
     case '/quantum':
@@ -216,8 +213,6 @@ const logo_pick = (path: string) => {
      return LogoSkoh 
     case '/dev':
      return LogoSkohDev 
-    case '/notskoh':
-     return LogoNotSkoh 
     case '/krystal':
      return LogoKrystal 
     case '/quantum':
@@ -242,8 +237,6 @@ const name_pick = (path: string) => {
      return 'Skoh'
     case '/dev':
      return 'Skoh'
-    case '/notskoh':
-     return 'NotSkoh'
     case '/krystal':
      return 'Krystal'
     case '/quantum':
@@ -268,21 +261,12 @@ const small_skoh_pick = (path: string) => {
       return (
         <div>
           <SmallPic src={LogoSkohDev} alt='Skoh&amps;s dev logo' url='/dev' />
-          <SmallPic src={LogoNotSkoh} alt='NotSkoh&amps;s logo' url='/notskoh' />
         </div>
     )
     case '/dev':
       return (
         <div>
-          <SmallPic src={LogoNotSkoh} alt='NotSkoh&amps;s logo' url='/notskoh' />
           <SmallPic src={LogoSkoh} alt='Skoh&amps;s logo' url='/' />
-        </div>
-    )
-    case '/notskoh':
-      return (
-        <div>
-          <SmallPic src={LogoSkoh} alt='Skoh&amps;s logo' url='/' />
-          <SmallPic src={LogoSkohDev} alt='Skoh&amps;s dev logo' url='/dev' />
         </div>
     )
   }
