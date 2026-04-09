@@ -16,7 +16,7 @@ jobs:
 
   deploy:
     name: Build & deploy
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04-arm
 
     steps:
 
