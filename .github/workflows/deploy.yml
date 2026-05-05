@@ -24,23 +24,25 @@ jobs:
 
       - uses: docker/setup-buildx-action@v3
 
-      - name: add ssh keys
-        run: |
-          install -m 600 -D /dev/null ~/.ssh/id_rsa
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
+      # - name: add ssh keys
+      #   run:
+      #     install -m 600 -D /dev/null ~/.ssh/id_rsa
+      #     echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+      #     ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
+      - run: install -m 600 -D /dev/null ~/.ssh/id_rsa
+      - run: echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
 
       - name: build and ship images
         id: docker_build
         run: |
           docker compose build
           docker save skoh-tv-nextjs -o skoh-tv-nextjs.tar
-          scp skoh-tv-nextjs.tar ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~ 
-          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "docker load -i skoh-tv-nextjs.tar"
+          scp -o "StrictHostKeyChecking accept-new" skoh-tv-nextjs.tar ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~ 
+          ssh -o "StrictHostKeyChecking accept-new" ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "docker load -i skoh-tv-nextjs.tar"
 
       - name: connect and redeploy
         run: |
-          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "\
+          ssh -o "StrictHostKeyChecking accept-new" ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "\
           cd ${{ secrets.WORKDIR }} &&\
           git pull origin && git reset --hard origin/main &&\
           docker compose down && docker compose up -d"
