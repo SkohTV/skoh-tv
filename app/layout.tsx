@@ -58,10 +58,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               <div>
                 <ChannelPic src={LogoSkoh} size={48} bsize={2} alt='Skoh&amps;s logo' url='/' />
                 <div className="h-px group-hover:w-4/5 group-focus:w-4/5 rounded-full m-2 bg-zinc-700"></div>
-                <ChannelPic src={LogoDeeptrout} size={48} bsize={2} alt='Deeptrout&amps;s logo' url='/deeptrout' />
                 <ChannelPic src={LogoTweast} size={48} bsize={2} alt='Tweast&amps;s logo' url='/tweast' />
-                <ChannelPic src={LogoGabiholo} size={48} bsize={2} alt='Gabiholo&amps;s logo' url='/gabiholo' />
-                <ChannelPic src={LogoLucup} size={48} bsize={2} alt='LucUp&amps;s logo' url='/lucup' />
+                <ChannelPic src={LogoDeeptrout} size={48} bsize={2} alt='Deeptrout&amps;s logo' url='/deeptrout' active={false} />
+                <ChannelPic src={LogoGabiholo} size={48} bsize={2} alt='Gabiholo&amps;s logo' url='/gabiholo' active={false} />
+                <ChannelPic src={LogoLucup} size={48} bsize={2} alt='LucUp&amps;s logo' url='/lucup' active={false} />
                 <div className="flex justify-evenly">
                   <div><ChannelPic src={LogoKrystal} size={20} bsize={2} alt='Krystal&amps;s logo' url='/krystal' /></div>
                   <div><ChannelPic src={LogoQuantum} size={20} bsize={2} alt='Quantum&amps;s logo' url='/quantum' /></div>
@@ -134,7 +134,7 @@ function SmallPic({ src, alt, url }: { src: StaticImageData, alt: string, url: s
 }
 
 
-function ChannelPic({ src, size, bsize, alt, url }: { src: StaticImageData, size: number, bsize: number, alt: string, url: string }) {
+function ChannelPic({ src, size, bsize, alt, url, active = true }: { src: StaticImageData, size: number, bsize: number, alt: string, url: string, active?: boolean }) {
   let pathname = usePathname()
   if (pathname === '/skoh')
     pathname = '/'
@@ -144,7 +144,7 @@ function ChannelPic({ src, size, bsize, alt, url }: { src: StaticImageData, size
   const margins = (size < 48 ? '' : 'm-2')
 
   return (
-    <Link href={url} className="w-[0px] h-[0px]">
+    <Link href={url} className={"w-[0px] h-[0px] " + (active ? '' : 'cursor-default grayscale')}>
       <div className={`${border_size} ${border_color} rounded-full ${margins} w-fit`}>
       <Image src={src} height={size} width={size} className="rounded-full" alt={alt} />
       </div>
